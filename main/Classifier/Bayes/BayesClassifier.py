@@ -54,8 +54,8 @@ class BayesClassifier(ABC):
         rn = range(0, self.attributes.shape[0])
         test_results = []
         for train_index, test_index in kf.split(rn):
-            x_train, x_test = self.attributes.iloc[train_index, :], self.labels.iloc[train_index, :]
-            y_train, y_test = self.attributes.iloc[train_index, :], self.labels.iloc[train_index, :]
+            x_train, x_test = self.attributes.iloc[train_index, :], self.attributes.iloc[test_index, :]
+            y_train, y_test = self.labels.iloc[train_index], self.labels.iloc[test_index]
             self.train(x_train, y_train)
             test_result = self.test(x_test, y_test)
             test_results.append(test_result)

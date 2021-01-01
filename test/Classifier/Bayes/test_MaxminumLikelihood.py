@@ -13,7 +13,6 @@ class Test(TestCase):
 
     def test_maximum_likelihood(self):
         bc = GaussianNB([0.5, 0.5], self.attributes, self.labels, 0.25)
-        x_train, x_test, y_train, y_test = bc.leave_out()
-        bc.train(x_train, y_train)
-        print(bc.test(x_test, y_test))
+        print(bc.cross_val())
+
 
